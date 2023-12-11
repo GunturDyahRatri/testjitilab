@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:testjitilab/models/contact.dart';
-// import 'package:testjitilab/models/contact.dart';
 import 'package:testjitilab/pages/detail_contact.dart';
 import 'package:testjitilab/provider/contact_provider.dart';
-// import 'package:testjitilab/provider/response/contact_responce.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider =  Provider.of<ContactProvider>(context, listen: false);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -48,15 +46,20 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
-              const TextField(
+              TextField(
+                onChanged: (value) {
+                  provider.search(value);
+                }, 
                 decoration: InputDecoration(
-                  labelText: 'Search',
-                  suffixIcon: Icon(Icons.search),
+                  hintText: 'Search',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  suffixIcon: const Icon(Icons.search),
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: contacts.length,
+                  itemCount: provider.searchText.length,
                   itemBuilder: (context, index) => Card(
                     key: ValueKey(contacts[index].id),
                     color: const Color.fromARGB(255, 209, 227, 236),
@@ -73,9 +76,6 @@ class _HomePageState extends State<HomePage> {
                               phoneNumber: contacts[index].phoneNumber,
                               id: contacts[index].id,
                             ),
-                            // avatar: contacts[index].avatar,
-                            // sex: contacts[index].sex,
-                            // phoneNumber: contacts[index].phoneNumber,
                           ),
                         ),
                       ),
