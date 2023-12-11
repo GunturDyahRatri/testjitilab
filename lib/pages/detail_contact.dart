@@ -1,67 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:testjitilab/models/contact.dart';
 
 class DetailContact extends StatelessWidget {
-  // final Contact contact;
   const DetailContact({
     super.key,
-    required this.name,
-    required this.avatar,
-    required this.sex,
-    required this.phoneNumber,
+    required this.contact,
+    // required this.avatar,
+    // required this.sex,
+    // required this.phoneNumber,
   });
-  final String name;
-  final String avatar;
-  final String sex;
-  final String phoneNumber;
+  final Contact contact;
+  // final String avatar;
+  // final String sex;
+  // final String phoneNumber;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 50, horizontal: 140),
+        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 140),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
               radius: 60,
-              // backgroundImage: NetworkImage(avatar),
+              backgroundImage: NetworkImage(contact.avatar),
               backgroundColor: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            SizedBox(
+             SizedBox(
               height: 20,
               child: Text(
-                "Bla bla bla bla",
-                style: TextStyle(
+                contact.name,
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            SizedBox(
+             SizedBox(
               height: 20,
               child: Text(
-                "Male",
-                style: TextStyle(
+                contact.sex,
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            SizedBox(
+             SizedBox(
               height: 20,
               child: Text(
-                "081-354-456-789",
-                style: TextStyle(
+                contact.phoneNumber,
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),

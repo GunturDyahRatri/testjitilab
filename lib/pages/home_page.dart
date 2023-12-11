@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:testjitilab/models/contact.dart';
 // import 'package:testjitilab/models/contact.dart';
 import 'package:testjitilab/pages/detail_contact.dart';
 import 'package:testjitilab/provider/contact_provider.dart';
@@ -65,10 +66,16 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetailContact(
-                            name: contacts[index].name,
-                            avatar: contacts[index].avatar,
-                            sex: contacts[index].sex,
-                            phoneNumber: contacts[index].phoneNumber,
+                            contact: Contact(
+                              name: contacts[index].name,
+                              avatar: contacts[index].avatar,
+                              sex: contacts[index].sex,
+                              phoneNumber: contacts[index].phoneNumber,
+                              id: contacts[index].id,
+                            ),
+                            // avatar: contacts[index].avatar,
+                            // sex: contacts[index].sex,
+                            // phoneNumber: contacts[index].phoneNumber,
                           ),
                         ),
                       ),
